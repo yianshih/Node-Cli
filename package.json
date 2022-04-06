@@ -7,8 +7,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "build:watch": "tsc --watch",
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc -p tsconfig.json --watch",
+    "chmod": "chmod 755 ./build/cli.js",
+    "exec": "chmod 755 ./build/cli.js && ./build/cli.js",
     "package": "pkg . --targets node14-macos-x64 --output kindred-script",
     "lint": "eslint '**/*.{js,ts}' --fix",
     "prettier": "prettier --write ."
@@ -32,9 +34,14 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
+    "chalk": "^4.1.0",
     "eslint-config-prettier": "^8.5.0",
     "inquirer": "^8.2.2",
+    "module-alias": "^2.2.2",
     "prettier": "^2.6.2",
     "yargs": "^17.4.0"
+  },
+  "_moduleAliases": {
+    "@cli": "./build"
   }
 }

@@ -3,7 +3,7 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   extends: [
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
+    "plugin:prettier/recommended"
   ],
-  ignorePatterns: ["build/**/*.js"],
+  ignorePatterns: ["build/**/*.js"]
 };

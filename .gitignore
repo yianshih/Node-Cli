@@ -93,5 +93,6 @@ Temporary Items
 .access^
 
 ### Kindred ###
-kindred-repo.json
 kindred-script
+repo.json
+secret

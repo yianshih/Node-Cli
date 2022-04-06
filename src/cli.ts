@@ -1,23 +1,7 @@
 #!/usr/bin/env node
 
-import { prompt } from "inquirer";
-import { list } from "./commands/config";
-import { displayMenu } from "./menu";
+require("module-alias/register");
 
-displayMenu();
-// prompt([{ name: "Hi", message: "Hello", type: "list", choices: list }]).then(
-//   (ans) => {
-//     console.log(ans);
-//   },
-// );
-// import yargs from 'yargs';
-// import { hideBin } from 'yargs/helpers';
+import { main as home } from "@cli/questions/home";
 
-// yargs(hideBin(process.argv))
-//   // Use the commands directory to scaffold.
-//   .commandDir('commands')
-//   // Enable strict mode.
-//   .strict()
-//   // Useful aliases.
-//   .alias({ h: 'help' })
-//   .argv;
+home();
