@@ -2,6 +2,6 @@
 
 require("module-alias/register");
 
-import { main as home } from "@cli/questions/home";
+import { main as home } from "@cli/entries/home";
 
 home();

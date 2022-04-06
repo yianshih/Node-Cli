@@ -1,8 +1,8 @@
 import { prompt, QuestionCollection } from "inquirer";
-import { main as cloneRepo } from "@cli/questions/clone-repo";
-import { main as gitCommands } from "@cli/questions/git-commands";
-import { main as kafkaManagement } from "@cli/questions/kafka-management";
-import { main as otherCommands } from "@cli/questions/other-commands";
+import { main as cloneRepo } from "@cli/entries/clone-repo";
+import { main as gitCommands } from "@cli/entries/git-commands";
+import { main as kafkaManagement } from "@cli/entries/kafka-management";
+import { main as otherCommands } from "@cli/entries/other-commands";
 import { logger } from "@cli/utils/logger";
 
 export enum HomeChoices {
