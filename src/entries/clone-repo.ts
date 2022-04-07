@@ -14,7 +14,7 @@ type RepoKey = keyof typeof repo;
 
 const repoKeys = Object.keys(repo) as RepoKey[];
 
-export interface CloneRepoAnswer {
+interface CloneRepoAnswer {
   repo: RepoKey;
   dir: string;
 }
