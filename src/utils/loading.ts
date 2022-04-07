@@ -10,5 +10,6 @@ export const showLoading = function () {
 };
 
 export const hideLoading = () => {
-  loadingIntervalObj && clearInterval(loadingIntervalObj);
+  if (loadingIntervalObj) clearInterval(loadingIntervalObj);
+  process.stdout.write("\r");
 };

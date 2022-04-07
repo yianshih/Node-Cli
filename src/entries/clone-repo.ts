@@ -27,20 +27,18 @@ export const CloneRepoMenu: QuestionCollection<CloneRepoAnswer>[] = [
 const gitCloneCmd = (url: string, folder = "") => `git clone ${url} ${folder}`;
 
 export const main = async () => {
-  const pwd = process.cwd();
   const answer = await prompt(CloneRepoMenu);
   const gitURL = GetRepoGit(answer.repo);
 
   if (!gitURL) return logger.error("error: cannot find git repository url");
 
-  const outputDir = answer.dir === "." ? pwd : answer.dir;
-  logger.info(`Cloning ${answer.repo} to ${outputDir}`);
+  logger.info(`Cloning ${answer.repo} to ${answer.dir}`);
   showLoading();
-  const cloneExec = exec(gitCloneCmd(gitURL, outputDir));
+  const cloneExec = exec(gitCloneCmd(gitURL, answer.dir));
   cloneExec(
     () => {
-      logger.success(`Cloned successfully`);
       hideLoading();
+      logger.success(`Cloned successfully`);
     },
     (e) => {
       hideLoading();
