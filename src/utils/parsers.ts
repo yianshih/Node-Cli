@@ -1,4 +1,4 @@
-const trimMultiSpaces = (value: string) => value.replace(/\s+/g, " ").trim();
+import { trimMultiSpaces } from "@cli/utils";
 
 const isHeaderValid = (headers: string[], obj: object): boolean => {
   const headersSet = new Set(headers);
