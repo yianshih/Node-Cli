@@ -46,11 +46,13 @@ export const main = async () => {
 
   logger.info(`Cloning ${answer.repo} to ${answer.dir}`);
   showLoading();
-  const cloneExec = exec(gitCloneCmd(gitURL, answer.dir));
+  const folder = `${answer.dir}/${answer.repo}`;
+  const cloneExec = exec(gitCloneCmd(gitURL, folder));
   cloneExec(
     () => {
       hideLoading();
       logger.success(`Cloned successfully`);
+      logger.info(`cd ${folder} && code .`);
     },
     (e) => {
       hideLoading();
