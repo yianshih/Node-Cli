@@ -1,10 +1,11 @@
-import { hideLoading, showLoading } from "@cli/utils/loading";
 import { logger } from "@cli/utils/logger";
 import { prompt, QuestionCollection } from "inquirer";
 import { main as killPort } from "@cli/entries/other-commands/kill-port";
+import { main as DeleteNodeModules } from "@cli/entries/other-commands/delete-node-modules";
 
 enum Commands {
-  KillPorts = "KillPorts"
+  KillPorts = "KillPorts",
+  DeleteNodeModules = "DeleteNodeModules"
 }
 
 type CommandType = keyof typeof Commands;
@@ -23,7 +24,8 @@ const OtherCommandsMenu: QuestionCollection<OtherCommandsAnswer>[] = [
 ];
 
 const AnswerAction: Record<CommandType, () => Promise<void>> = {
-  [Commands.KillPorts]: killPort
+  [Commands.KillPorts]: killPort,
+  [Commands.DeleteNodeModules]: DeleteNodeModules
 };
 
 export const main = async () => {

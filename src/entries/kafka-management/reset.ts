@@ -24,13 +24,12 @@ const TopicMenu: QuestionCollection<TopicAnswer>[] = [
 ];
 
 const ResetCmd = (topics: string[], date: string) =>
-  `docker compose exec -e KAFKA_ENV="int" -e 
-  KAFKA_GROUP_ID="kafka-mirror-consumer-local-$(whoami)" 
-  kafka /opt/infra/kafka-utils.sh 
-  "reset-consumer-group-topics-offset" 
-  "${date}"`;
+  `docker compose exec -e KAFKA_ENV="int" -e KAFKA_GROUP_ID="kafka-mirror-consumer-local-$(whoami)" kafka /opt/infra/kafka-utils.sh "reset-consumer-group-topics-offset" "${date}"`;
 
 export const main = async () => {
   const { topics, date } = await prompt(TopicMenu);
-  console.log({ cmd: ResetCmd(topics, new Date(date).toISOString()) });
+  exec(ResetCmd(topics, new Date(date).toISOString()))(
+    () => logger.success("Reset Successfully"),
+    (e) => logger.error(e)
+  );
 };
